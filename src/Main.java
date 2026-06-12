@@ -192,7 +192,6 @@ public class Main {
                 default: System.out.println("Opcion invalida.");
             }
         } while (op != 0);
-    }
 
     static void agregarPedido() {
         System.out.print("Codigo del producto: ");
