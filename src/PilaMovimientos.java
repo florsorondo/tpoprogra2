@@ -32,11 +32,11 @@ public class PilaMovimientos {
 
     public void mostrar() {
         if (tope == -1) {
-            System.out.println("No hay movimientos registrados ")
+            System.out.println("No hay movimientos registrados ");
             return;
         }
         System.out.println("Historial de Movimientos:");
-        for (int = i tope; i >= 0; i--) {
+        for (int i = tope; i >= 0; i--) {
             System.out.println(pila[i]);
         }
     }
