@@ -26,4 +26,19 @@ public class PilaMovimientos {
         tope--;
         return eliminado;
     }
+    public boolean estaVacia() {
+        return tope == -1;
+    }
+
+    public void mostrar() {
+        if (tope == -1) {
+            System.out.println("No hay movimientos registrados ")
+            return;
+        }
+        System.out.println("Historial de Movimientos:");
+        for (int = i tope; i >= 0; i--) {
+            System.out.println(pila[i]);
+        }
+    }
+
 }
