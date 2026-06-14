@@ -354,8 +354,8 @@ public class Main {
 
     static void rebuildStockCritico() {
         stockCritico = new ColaPrioridadStock(50);
-        for (int i = 0; i < diccionario.cantidad; i++) {
-            stockCritico.insertar(diccionario.productos[i]);
+        for (Producto p : diccionario.obtenerTodos()) {
+            stockCritico.insertar(p);
         }
     }
 

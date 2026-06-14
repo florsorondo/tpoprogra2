@@ -34,7 +34,7 @@ Grafo (⁠ GrafoDeposito ⁠): representa el depósito como una red de secto
 [https://github.com/florsorondo/tpoprogra2]
 
 ## Actividades Realizadas por Integrante
-El desarrollo fue colaborativo. Lo siguiente refleja la responsabilidad principal de commit de cada integrante.
-Florencia Sorondo Gardini: README.md, Pedido.java, PilaMovimientos.java
-Joaquin Leon de la Barra: Grafodeposito.java
-Bautista Fuster: Main.java
+El desarrollo fue colaborativo. Lo siguiente refleja la responsabilidad principal de cada integrante.
+- Florencia Sorondo Gardini: README.md, estructuras base iniciales (Producto.java, DiccionarioProductos.java, ColaPedidos.java, ColaPrioridadStock.java, Movimiento.java), Pedido.java, PilaMovimientos.java
+- Joaquin Leon de la Barra: GrafoDeposito.java (modelado del depósito y BFS) y ajustes de integración
+- Bautista Fuster: Main.java (menú de prueba e integración de módulos)
