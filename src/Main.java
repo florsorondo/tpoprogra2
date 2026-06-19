@@ -31,7 +31,7 @@ public class Main {
         sc.close();
     }
 
-    // ─── CARGA INICIAL ────────────────────────────────────────────────────────
+    
 
     static void cargarDatosPrueba() {
         System.out.println("=== SISTEMA LOGISTOCK ===");
@@ -66,8 +66,7 @@ public class Main {
         System.out.println("5 productos, 2 pedidos y 7 sectores cargados.\n");
     }
 
-    // ─── MENÚ PRINCIPAL ───────────────────────────────────────────────────────
-
+    
     static void mostrarMenuPrincipal() {
         System.out.println("╔══════════════════════════════╗");
         System.out.println("║      SISTEMA LOGISTOCK       ║");
@@ -82,7 +81,7 @@ public class Main {
         System.out.print("Seleccione: ");
     }
 
-    // ─── MÓDULO 1: PRODUCTOS ──────────────────────────────────────────────────
+    
 
     static void menuProductos() {
         int op;
@@ -138,7 +137,7 @@ public class Main {
         }
     }
 
-    // ─── MÓDULO 2: STOCK CRÍTICO ──────────────────────────────────────────────
+    
 
     static void menuStockCritico() {
         int op;
@@ -169,7 +168,7 @@ public class Main {
         } while (op != 0);
     }
 
-    // ─── MÓDULO 3: PEDIDOS ────────────────────────────────────────────────────
+    
 
     static void menuPedidos() {
         int op;
@@ -233,7 +232,7 @@ public class Main {
         System.out.println("Despacho completado. Stock actualizado: " + p);
     }
 
-    // ─── MÓDULO 4: MOVIMIENTOS ────────────────────────────────────────────────
+    
 
     static void menuMovimientos() {
         int op;
@@ -299,7 +298,7 @@ public class Main {
         System.out.println("Revertido. Stock actual: " + ultimo.producto);
     }
 
-    // ─── MÓDULO 5: DEPOSITO ───────────────────────────────────────────────────
+    
 
     static void menuDeposito() {
         int op;
@@ -350,7 +349,7 @@ public class Main {
         } while (op != 0);
     }
 
-    // ─── UTILIDADES ───────────────────────────────────────────────────────────
+    
 
     static void rebuildStockCritico() {
         stockCritico = new ColaPrioridadStock(50);

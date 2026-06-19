@@ -1,7 +1,5 @@
 public class DiccionarioProductos {
-    // Tabla hash con direccionamiento abierto (sondeo lineal).
-    // Permite localizar un producto por su codigo SIN recorrer todo el arreglo,
-    // tal como pide el enunciado ("sin realizar recorridos lineales").
+    
     Producto[] tabla;
     int capacidad;
     int cantidad;
@@ -12,7 +10,7 @@ public class DiccionarioProductos {
         this.cantidad = 0;
     }
 
-    // Funcion de hash: convierte el codigo en una posicion del arreglo.
+   
     private int hash(String codigo) {
         int h = 0;
         for (int i = 0; i < codigo.length(); i++) {
@@ -27,10 +25,10 @@ public class DiccionarioProductos {
             return;
         }
         int pos = hash(p.codigo);
-        // Si la posicion esta ocupada por otro codigo, busca la siguiente libre.
+        
         while (tabla[pos] != null) {
             if (tabla[pos].codigo.equals(p.codigo)) {
-                tabla[pos] = p; // mismo codigo: actualiza
+                tabla[pos] = p; 
                 return;
             }
             pos = (pos + 1) % capacidad;
@@ -39,7 +37,7 @@ public class DiccionarioProductos {
         cantidad++;
     }
 
-    // Busqueda directa por hash (no recorre todo el deposito).
+    
     public Producto buscar(String codigo) {
         int pos = hash(codigo);
         int recorridos = 0;
@@ -61,8 +59,7 @@ public class DiccionarioProductos {
         }
     }
 
-    // Devuelve todos los productos en un arreglo compacto.
-    // Sirve para reconstruir otras estructuras (ej: la cola de stock critico).
+    
     public Producto[] obtenerTodos() {
         Producto[] r = new Producto[cantidad];
         int k = 0;

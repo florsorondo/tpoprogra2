@@ -34,7 +34,7 @@ public class GrafoDeposito {
         return -1;
     }
 
-    // BFS para encontrar la ruta mas corta entre dos sectores
+   
     public String calcularRuta(String origen, String destino) {
         int inicio = indexOf(origen);
         int fin = indexOf(destino);
@@ -69,7 +69,7 @@ public class GrafoDeposito {
 
         if (!encontrado) return "No existe ruta entre " + origen + " y " + destino + ".";
 
-        // Reconstruir camino desde destino hacia origen y luego invertir
+        
         String[] camino = new String[cantidad];
         int largo = 0;
         int nodo = fin;

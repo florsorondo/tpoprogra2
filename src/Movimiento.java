@@ -1,7 +1,7 @@
 public class Movimiento {
     Producto producto;
     int cantidad;
-    String tipo; // INGRESO o EGRESO
+    String tipo; 
 
     public Movimiento(Producto producto, int cantidad, String tipo) {
         this.producto = producto;
