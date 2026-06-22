@@ -1,3 +1,5 @@
+package tda;
+
 public class GrafoDeposito {
     String[] sectores;
     boolean[][] conexiones;

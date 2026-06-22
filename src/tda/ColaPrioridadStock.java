@@ -1,3 +1,7 @@
+package tda;
+
+import model.Producto;
+
 public class ColaPrioridadStock {
     Producto[] cola;
     int cantidad;

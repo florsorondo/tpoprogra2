@@ -1,3 +1,7 @@
+package tda;
+
+import model.Movimiento;
+
 public class PilaMovimientos {
     Movimiento[] pila;
     int tope;

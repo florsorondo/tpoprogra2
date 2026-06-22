@@ -1,5 +1,7 @@
+package model;
+
 public class Movimiento {
-    Producto producto;
+    public Producto producto;
     int cantidad;
     String tipo; 
 

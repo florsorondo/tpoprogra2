@@ -1,7 +1,9 @@
+package model;
+
 public class Pedido {
     int id;
-    String codigoProducto;
-    int cantidad;
+    public String codigoProducto;
+    public int cantidad;
     String estado;
 
     public Pedido(int id, String codigoProducto, int cantidad, String estado) {

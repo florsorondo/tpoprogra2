@@ -1,7 +1,9 @@
+package model;
+
 public class Producto {
-    String codigo;
-    String nombre;
-    int stock;
+    public String codigo;
+    public String nombre;
+    public int stock;
     String ubicacion;
 
     public Producto(String codigo, String nombre, int stock, String ubicacion) {

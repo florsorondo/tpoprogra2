@@ -1,4 +1,15 @@
+package view;
+
 import java.util.Scanner;
+
+import model.Movimiento;
+import model.Pedido;
+import model.Producto;
+import tda.ColaPedidos;
+import tda.ColaPrioridadStock;
+import tda.DiccionarioProductos;
+import tda.GrafoDeposito;
+import tda.PilaMovimientos;
 
 public class Main {
 

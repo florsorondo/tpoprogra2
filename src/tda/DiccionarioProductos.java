@@ -1,3 +1,7 @@
+package tda;
+
+import model.Producto;
+
 public class DiccionarioProductos {
     
     Producto[] tabla;

@@ -1,3 +1,7 @@
+package tda;
+
+import model.Pedido;
+
 public class ColaPedidos {
     Pedido[] cola;
     int frente;
