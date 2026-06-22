@@ -22,13 +22,26 @@ Pila (⁠ PilaMovimientos ⁠): registra cada movimiento de mercadería (ing
 
 Grafo (⁠ GrafoDeposito ⁠): representa el depósito como una red de sectores conectados por pasillos. Sobre esta estructura aplicamos BFS para calcular la ruta más corta entre dos puntos del depósito.
 
+## Estructura del Proyecto
+El código está organizado en tres paquetes dentro de src/, según la responsabilidad de cada clase:
+
+model: clases de datos simples — Producto, Pedido y Movimiento. No contienen lógica de estructuras de datos, solo representan la información.
+tda: las cinco estructuras de datos propias del trabajo — DiccionarioProductos, ColaPrioridadStock, ColaPedidos, PilaMovimientos y GrafoDeposito. Todas implementadas con arreglos, sin usar colecciones nativas de Java.
+view: contiene Main, que maneja el menú por consola y coordina la interacción entre los demás módulos
+
+## Compilación y ejecución
+Para correr el programa hay que abrir una terminal, ubicarse dentro de la carpeta src del proyecto, y ejecutar estos dos comandos:
+
+```javac model/*.java tda/*.java view/*.java```
+```java view.Main```
+El primer comando (javac) compila todas las clases del proyecto. El segundo (java view.Main) ejecuta el programa, arrancando desde la clase Main, que es la que muestra el menú principal por consola.
+
 ## Funcionalidades Implementadas en la Segunda Etapa
 1.⁠ ⁠Gestión de Productos: registro de nuevos productos, búsqueda por código y listado completo del inventario.
 2.⁠ ⁠Control de Stock Crítico: visualización de productos ordenados por nivel de stock e identificación del producto que requiere reposición urgente.
 3.⁠ ⁠Gestión de Pedidos: alta de pedidos con producto y cantidad, despacho FIFO con actualización automática de stock, y visualización de la cola.
 4.⁠ Movimientos de Stock: registro de ingresos y egresos de mercadería con actualización de stock, y reversión del último movimiento registrado (deshacer).
 5.⁠ ⁠Rutas del Depósito: modelado del depósito como grafo no dirigido, con alta de sectores, conexión entre pasillos y cálculo de la ruta más corta entre dos puntos usando BFS.
-
 
 ## Link del Repositorio
 [https://github.com/florsorondo/tpoprogra2]
