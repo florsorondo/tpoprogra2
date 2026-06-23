@@ -3,74 +3,59 @@ package tda;
 import model.Producto;
 
 public class DiccionarioProductos {
-    
-    Producto[] tabla;
+
+    String[] claves;
+    Producto[] valores;
     int capacidad;
     int cantidad;
 
     public DiccionarioProductos(int capacidad) {
         this.capacidad = capacidad;
-        this.tabla = new Producto[capacidad];
+        this.claves = new String[capacidad];
+        this.valores = new Producto[capacidad];
         this.cantidad = 0;
     }
 
-   
-    private int hash(String codigo) {
-        int h = 0;
-        for (int i = 0; i < codigo.length(); i++) {
-            h = (h * 31 + codigo.charAt(i)) % capacidad;
+    private int buscarPosicion(String codigo) {
+        for (int i = 0; i < cantidad; i++) {
+            if (claves[i].equals(codigo)) {
+                return i;
+            }
         }
-        return Math.abs(h);
+        return -1;
     }
 
     public void insertar(Producto p) {
+        int pos = buscarPosicion(p.codigo);
+        if (pos != -1) {
+            valores[pos] = p;
+            return;
+        }
         if (cantidad == capacidad) {
             System.out.println("Diccionario lleno.");
             return;
         }
-        int pos = hash(p.codigo);
-        
-        while (tabla[pos] != null) {
-            if (tabla[pos].codigo.equals(p.codigo)) {
-                tabla[pos] = p; 
-                return;
-            }
-            pos = (pos + 1) % capacidad;
-        }
-        tabla[pos] = p;
+        claves[cantidad] = p.codigo;
+        valores[cantidad] = p;
         cantidad++;
     }
 
-    
     public Producto buscar(String codigo) {
-        int pos = hash(codigo);
-        int recorridos = 0;
-        while (tabla[pos] != null && recorridos < capacidad) {
-            if (tabla[pos].codigo.equals(codigo)) {
-                return tabla[pos];
-            }
-            pos = (pos + 1) % capacidad;
-            recorridos++;
-        }
-        return null;
+        int pos = buscarPosicion(codigo);
+        if (pos == -1) return null;
+        return valores[pos];
     }
 
     public void mostrar() {
-        for (int i = 0; i < capacidad; i++) {
-            if (tabla[i] != null) {
-                System.out.println(tabla[i]);
-            }
+        for (int i = 0; i < cantidad; i++) {
+            System.out.println(valores[i]);
         }
     }
 
-    
     public Producto[] obtenerTodos() {
         Producto[] r = new Producto[cantidad];
-        int k = 0;
-        for (int i = 0; i < capacidad; i++) {
-            if (tabla[i] != null) {
-                r[k++] = tabla[i];
-            }
+        for (int i = 0; i < cantidad; i++) {
+            r[i] = valores[i];
         }
         return r;
     }
