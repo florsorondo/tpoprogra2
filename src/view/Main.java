@@ -124,12 +124,9 @@ public class Main {
             System.out.println("Ya existe un producto con ese codigo.");
             return;
         }
-        System.out.print("Nombre: ");
-        String nombre = sc.nextLine().trim();
-        System.out.print("Stock inicial: ");
-        int stock = leerEntero();
-        System.out.print("Ubicacion en el deposito: ");
-        String ubicacion = sc.nextLine().trim();
+        String nombre = leerTexto("Nombre: ");
+        int stock = leerEnteroPositivo("Stock inicial: ");
+        String ubicacion = leerTexto("Ubicacion en el deposito: ");
 
         Producto nuevo = new Producto(codigo, nombre, stock, ubicacion);
         diccionario.insertar(nuevo);
@@ -205,18 +202,8 @@ public class Main {
     }
 
     static void agregarPedido() {
-        System.out.print("Codigo del producto: ");
-        String codigo = sc.nextLine().trim().toUpperCase();
-        if (diccionario.buscar(codigo) == null) {
-            System.out.println("Producto no encontrado en el sistema.");
-            return;
-        }
-        System.out.print("Cantidad solicitada: ");
-        int cantidad = leerEntero();
-        if (cantidad <= 0) {
-            System.out.println("Cantidad invalida.");
-            return;
-        }
+        String codigo = leerCodigoExistente("Codigo del producto: ");
+        int cantidad = leerEnteroPositivo("Cantidad solicitada: ");
         Pedido pedido = new Pedido(proximoIdPedido++, codigo, cantidad, "Listo para despacho");
         colaPedidos.encolar(pedido);
         System.out.println("Pedido registrado: " + pedido);
@@ -268,19 +255,9 @@ public class Main {
     }
 
     static void registrarMovimiento(String tipo) {
-        System.out.print("Codigo del producto: ");
-        String codigo = sc.nextLine().trim().toUpperCase();
+        String codigo = leerCodigoExistente("Codigo del producto: ");
         Producto p = diccionario.buscar(codigo);
-        if (p == null) {
-            System.out.println("Producto no encontrado.");
-            return;
-        }
-        System.out.print("Cantidad: ");
-        int cantidad = leerEntero();
-        if (cantidad <= 0) {
-            System.out.println("Cantidad invalida.");
-            return;
-        }
+        int cantidad = leerEnteroPositivo("Cantidad: ");
         if (tipo.equals("EGRESO") && p.stock < cantidad) {
             System.out.println("Stock insuficiente. Disponible: " + p.stock);
             return;
@@ -324,8 +301,7 @@ public class Main {
             op = leerEntero();
             switch (op) {
                 case 1:
-                    System.out.print("Nombre del sector: ");
-                    String sector = sc.nextLine().trim();
+                    String sector = leerTexto("Nombre del sector: ");
                     if (deposito.agregarSector(sector)) {
                         System.out.println("Sector '" + sector + "' agregado.");
                     } else {
@@ -333,10 +309,8 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.print("Sector 1: ");
-                    String s1 = sc.nextLine().trim();
-                    System.out.print("Sector 2: ");
-                    String s2 = sc.nextLine().trim();
+                    String s1 = leerTexto("Sector 1: ");
+                    String s2 = leerTexto("Sector 2: ");
                     if (deposito.agregarConexion(s1, s2)) {
                         System.out.println("Conexion agregada entre '" + s1 + "' y '" + s2 + "'.");
                     } else {
@@ -344,10 +318,8 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.print("Sector origen: ");
-                    String origen = sc.nextLine().trim();
-                    System.out.print("Sector destino: ");
-                    String destino = sc.nextLine().trim();
+                    String origen = leerTexto("Sector origen: ");
+                    String destino = leerTexto("Sector destino: ");
                     System.out.println("Ruta: " + deposito.calcularRuta(origen, destino));
                     break;
                 case 4:
@@ -376,6 +348,44 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.print("Ingrese un numero valido: ");
             }
+        }
+    }
+
+    static int leerEnteroPositivo(String mensaje) {
+        while (true) {
+            System.out.print(mensaje);
+            try {
+                int valor = Integer.parseInt(sc.nextLine().trim());
+                if (valor > 0) return valor;
+                System.out.print("Debe ser un numero mayor a 0. Reintente: ");
+            } catch (NumberFormatException e) {
+                System.out.print("Ingrese un numero valido: ");
+            }
+        }
+    }
+
+    static String leerCodigoExistente(String mensaje) {
+        while (true) {
+            System.out.print(mensaje);
+            String codigo = sc.nextLine().trim().toUpperCase();
+            if (diccionario.buscar(codigo) != null) return codigo;
+            System.out.println("Producto '" + codigo + "' no encontrado. Reintente.");
+        }
+    }
+
+    static String leerTexto(String mensaje) {
+        while (true) {
+            System.out.print(mensaje);
+            String valor = sc.nextLine().trim();
+            if (valor.isEmpty()) {
+                System.out.print("El campo no puede estar vacio. Reintente: ");
+                continue;
+            }
+            if (valor.matches("[0-9]+")) {
+                System.out.print("Ingrese texto, no solo numeros. Reintente: ");
+                continue;
+            }
+            return valor;
         }
     }
 }
