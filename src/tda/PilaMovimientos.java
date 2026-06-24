@@ -12,6 +12,7 @@ public class PilaMovimientos {
     }
 
     public void apilar(Movimiento m) {
+         // pila.length - 1 es la última posición válida del array; si "tope" ya está ahí, no hay más lugar
         if (tope == pila.length - 1) {
             System.out.println("Pila llena.");
         } else {

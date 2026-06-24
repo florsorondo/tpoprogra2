@@ -352,6 +352,8 @@ public class Main {
     }
 
     static int leerEnteroPositivo(String mensaje) {
+        // Repite el pedido hasta recibir un número válido y mayor a 0,
+        // evitando que el programa falle si el usuario ingresa texto o un número negativo
         while (true) {
             System.out.print(mensaje);
             try {
@@ -365,6 +367,8 @@ public class Main {
     }
 
     static String leerCodigoExistente(String mensaje) {
+        // Repite el pedido de dato hasta que el usuario ingrese un código que exista
+        // en el diccionario, evitando que el programa siga con un código inválido
         while (true) {
             System.out.print(mensaje);
             String codigo = sc.nextLine().trim().toUpperCase();

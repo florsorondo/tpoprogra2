@@ -28,6 +28,8 @@ public class DiccionarioProductos {
     public void insertar(Producto p) {
         int pos = buscarPosicion(p.codigo);
         if (pos != -1) {
+        // Si el código ya existe, actualiza el producto en esa posición
+        // en vez de agregarlo duplicado
             valores[pos] = p;
             return;
         }

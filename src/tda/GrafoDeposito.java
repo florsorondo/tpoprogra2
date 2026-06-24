@@ -24,6 +24,8 @@ public class GrafoDeposito {
         int i = indexOf(s1);
         int j = indexOf(s2);
         if (i == -1 || j == -1) return false;
+        // Se marca la conexión en ambos sentidos porque el grafo es no dirigido:
+        // si A se conecta con B, entonces B también se conecta con A
         conexiones[i][j] = true;
         conexiones[j][i] = true;
         return true;
@@ -45,8 +47,8 @@ public class GrafoDeposito {
         if (inicio == fin) return "Ya esta en el sector: " + origen;
 
         boolean[] visitado = new boolean[cantidad];
-        int[] padre = new int[cantidad];
-        int[] queue = new int[cantidad];
+        int[] padre = new int[cantidad]; // guarda desde qué sector se llegó a cada sector, para reconstruir el camino al final
+        int[] queue = new int[cantidad]; // actúa como cola: los sectores a explorar, en orden de cercanía
         for (int i = 0; i < cantidad; i++) padre[i] = -1;
 
         int frente = 0, fondo = 0;
@@ -54,6 +56,9 @@ public class GrafoDeposito {
         visitado[inicio] = true;
         boolean encontrado = false;
 
+        // Recorre el grafo "por niveles": primero los vecinos directos del origen,
+        // después los vecinos de esos vecinos, y así, hasta encontrar el destino.
+        // Esto garantiza que el primer camino encontrado sea el más corto.       
         while (frente < fondo && !encontrado) {
             int actual = queue[frente++];
             for (int i = 0; i < cantidad; i++) {

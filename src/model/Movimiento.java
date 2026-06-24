@@ -12,6 +12,8 @@ public class Movimiento {
     }
 
     public void revertir() {
+        // Revertir un movimiento significa hacer la operación contraria:
+        // un INGRESO se deshace restando, y un EGRESO se deshace sumando
         if (tipo.equals("INGRESO")) {
             producto.disminuirStock(cantidad);
         } else if (tipo.equals("EGRESO")) {

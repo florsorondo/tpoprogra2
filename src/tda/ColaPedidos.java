@@ -19,6 +19,7 @@ public class ColaPedidos {
         if (cantidad == cola.length) {
             System.out.println("Cola llena.");
         } else {
+             // Avanza el índice "fin" de forma circular: si llega al final del array, vuelve a la posición 0
             fin = (fin + 1) % cola.length;
             cola[fin] = p;
             cantidad++;
@@ -32,6 +33,7 @@ public class ColaPedidos {
         }
 
         Pedido eliminado = cola[frente];
+         // Avanza el índice "frente" de forma circular: si llega al final del array, vuelve a la posición 0
         frente = (frente + 1) % cola.length;
         cantidad--;
         return eliminado;
