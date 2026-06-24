@@ -301,7 +301,7 @@ public class Main {
             op = leerEntero();
             switch (op) {
                 case 1:
-                    String sector = leerTexto("Nombre del sector: ");
+                    String sector = leerNombreSector("Nombre del sector (ej: A3, o Entrada/Salida): ");
                     if (deposito.agregarSector(sector)) {
                         System.out.println("Sector '" + sector + "' agregado.");
                     } else {
@@ -374,6 +374,21 @@ public class Main {
             String codigo = sc.nextLine().trim().toUpperCase();
             if (diccionario.buscar(codigo) != null) return codigo;
             System.out.println("Producto '" + codigo + "' no encontrado. Reintente.");
+        }
+    }
+
+    static String leerNombreSector(String mensaje) {
+        while (true) {
+            String sector = leerTexto(mensaje);
+
+            if (sector.equalsIgnoreCase("Entrada")) return "Entrada";
+            if (sector.equalsIgnoreCase("Salida")) return "Salida";
+
+            if (sector.matches("[A-Z][0-9]{1,2}")) {
+                return "Sector " + sector;
+            }
+
+            System.out.println("Formato invalido. Use 'Entrada', 'Salida' o letra+numero de 1 o 2 cifras (ej: A3, B12).");
         }
     }
 
