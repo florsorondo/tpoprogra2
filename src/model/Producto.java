@@ -4,7 +4,7 @@ public class Producto {
     public String codigo;
     public String nombre;
     public int stock;
-    String ubicacion;
+    public String ubicacion;
 
     public Producto(String codigo, String nombre, int stock, String ubicacion) {
         this.codigo = codigo;

@@ -1,10 +1,10 @@
 package model;
 
 public class Pedido {
-    int id;
+    public int id;
     public String codigoProducto;
     public int cantidad;
-    String estado;
+    public String estado;
 
     public Pedido(int id, String codigoProducto, int cantidad, String estado) {
         this.id = id;
@@ -12,8 +12,6 @@ public class Pedido {
         this.cantidad = cantidad;
         this.estado = estado;
     }
-
-    @Override
     public String toString() {
         return "Pedido #" + id + " | Producto: " + codigoProducto + " x" + cantidad + " | Estado: " + estado;
     }

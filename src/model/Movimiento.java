@@ -2,8 +2,8 @@ package model;
 
 public class Movimiento {
     public Producto producto;
-    int cantidad;
-    String tipo; 
+    public int cantidad;
+    public String tipo; 
 
     public Movimiento(Producto producto, int cantidad, String tipo) {
         this.producto = producto;

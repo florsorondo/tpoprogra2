@@ -37,7 +37,6 @@ public class GrafoDeposito {
         }
         return -1;
     }
-
    
     public String calcularRuta(String origen, String destino) {
         int inicio = indexOf(origen);

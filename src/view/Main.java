@@ -54,11 +54,9 @@ public class Main {
         Producto p4 = new Producto("P004", "Aceite 900ml",  2,  "Sector A2");
         Producto p5 = new Producto("P005", "Harina 1kg",    15, "Sector B1");
 
-        diccionario.insertar(p1); diccionario.insertar(p2); diccionario.insertar(p3);
-        diccionario.insertar(p4); diccionario.insertar(p5);
+        diccionario.insertar(p1); diccionario.insertar(p2); diccionario.insertar(p3);diccionario.insertar(p4); diccionario.insertar(p5);
 
-        stockCritico.insertar(p1); stockCritico.insertar(p2); stockCritico.insertar(p3);
-        stockCritico.insertar(p4); stockCritico.insertar(p5);
+        stockCritico.insertar(p1); stockCritico.insertar(p2); stockCritico.insertar(p3); stockCritico.insertar(p4); stockCritico.insertar(p5);
 
         colaPedidos.encolar(new Pedido(proximoIdPedido++, "P002", 5,  "Listo para despacho"));
         colaPedidos.encolar(new Pedido(proximoIdPedido++, "P005", 10, "Listo para despacho"));
@@ -95,7 +93,7 @@ public class Main {
     
 
     static void menuProductos() {
-        int op;
+        int opcion;
         do {
             System.out.println("\n--- Gestion de Productos ---");
             System.out.println("1. Registrar producto");
@@ -103,18 +101,17 @@ public class Main {
             System.out.println("3. Listar todos");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
-            op = leerEntero();
-            switch (op) {
+            opcion = leerEntero();
+            switch (opcion) {
                 case 1: registrarProducto(); break;
                 case 2: buscarProducto(); break;
                 case 3:
                     System.out.println("\nProductos en el sistema:");
-                    diccionario.mostrar();
-                    break;
+                    diccionario.mostrar(); break;
                 case 0: break;
                 default: System.out.println("Opcion invalida.");
             }
-        } while (op != 0);
+        } while (opcion != 0);
     }
 
     static void registrarProducto() {
@@ -148,15 +145,15 @@ public class Main {
     
 
     static void menuStockCritico() {
-        int op;
+        int opcion;
         do {
             System.out.println("\n--- Control de Stock Critico ---");
             System.out.println("1. Ver productos ordenados por stock");
             System.out.println("2. Identificar producto mas critico");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
-            op = leerEntero();
-            switch (op) {
+            opcion = leerEntero();
+            switch (opcion) {
                 case 1:
                     rebuildStockCritico();
                     System.out.println("\nProductos (menor stock primero):");
@@ -173,13 +170,11 @@ public class Main {
                 case 0: break;
                 default: System.out.println("Opcion invalida.");
             }
-        } while (op != 0);
+        } while (opcion != 0);
     }
 
-    
-
     static void menuPedidos() {
-        int op;
+        int opcion;
         do {
             System.out.println("\n--- Gestion de Pedidos ---");
             System.out.println("1. Agregar pedido");
@@ -187,8 +182,8 @@ public class Main {
             System.out.println("3. Ver cola de pedidos");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
-            op = leerEntero();
-            switch (op) {
+            opcion = leerEntero();
+            switch (opcion) {
                 case 1: agregarPedido(); break;
                 case 2: despacharPedido(); break;
                 case 3:
@@ -198,7 +193,7 @@ public class Main {
                 case 0: break;
                 default: System.out.println("Opcion invalida.");
             }
-        } while (op != 0);
+        } while (opcion != 0);
     }
 
     static void agregarPedido() {
@@ -233,7 +228,7 @@ public class Main {
     
 
     static void menuMovimientos() {
-        int op;
+        int opcion;
         do {
             System.out.println("\n--- Movimientos de Stock ---");
             System.out.println("1. Registrar ingreso de mercaderia");
@@ -242,8 +237,8 @@ public class Main {
             System.out.println("4. Ver historial");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
-            op = leerEntero();
-            switch (op) {
+            opcion = leerEntero();
+            switch (opcion) {
                 case 1: registrarMovimiento("INGRESO"); break;
                 case 2: registrarMovimiento("EGRESO"); break;
                 case 3: deshacerMovimiento(); break;
@@ -251,7 +246,7 @@ public class Main {
                 case 0: break;
                 default: System.out.println("Opcion invalida.");
             }
-        } while (op != 0);
+        } while (opcion != 0);
     }
 
     static void registrarMovimiento(String tipo) {
@@ -289,7 +284,7 @@ public class Main {
     
 
     static void menuDeposito() {
-        int op;
+        int opcion;
         do {
             System.out.println("\n--- Rutas del Deposito ---");
             System.out.println("1. Agregar sector");
@@ -298,8 +293,8 @@ public class Main {
             System.out.println("4. Ver mapa del deposito");
             System.out.println("0. Volver");
             System.out.print("Opcion: ");
-            op = leerEntero();
-            switch (op) {
+            opcion = leerEntero();
+            switch (opcion) {
                 case 1:
                     String sector = leerNombreSector("Nombre del sector (ej: A3, o Entrada/Salida): ");
                     if (deposito.agregarSector(sector)) {
@@ -329,7 +324,7 @@ public class Main {
                 case 0: break;
                 default: System.out.println("Opcion invalida.");
             }
-        } while (op != 0);
+        } while (opcion != 0);
     }
 
     
