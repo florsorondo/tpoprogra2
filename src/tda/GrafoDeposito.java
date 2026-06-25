@@ -37,6 +37,10 @@ public class GrafoDeposito {
         }
         return -1;
     }
+
+    public boolean existeSector(String nombre) {
+        return indexOf(nombre) != -1;
+    }
    
     public String calcularRuta(String origen, String destino) {
         int inicio = indexOf(origen);

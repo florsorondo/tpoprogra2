@@ -304,8 +304,8 @@ public class Main {
                     }
                     break;
                 case 2:
-                    String s1 = leerTexto("Sector 1: ");
-                    String s2 = leerTexto("Sector 2: ");
+                    String s1 = leerSectorExistente("Sector 1: ");
+                    String s2 = leerSectorExistente("Sector 2: ");
                     if (deposito.agregarConexion(s1, s2)) {
                         System.out.println("Conexion agregada entre '" + s1 + "' y '" + s2 + "'.");
                     } else {
@@ -313,8 +313,8 @@ public class Main {
                     }
                     break;
                 case 3:
-                    String origen = leerTexto("Sector origen: ");
-                    String destino = leerTexto("Sector destino: ");
+                    String origen = leerSectorExistente("Sector origen: ");
+                    String destino = leerSectorExistente("Sector destino: ");
                     System.out.println("Ruta: " + deposito.calcularRuta(origen, destino));
                     break;
                 case 4:
@@ -369,6 +369,14 @@ public class Main {
             String codigo = sc.nextLine().trim().toUpperCase();
             if (diccionario.buscar(codigo) != null) return codigo;
             System.out.println("Producto '" + codigo + "' no encontrado. Reintente.");
+        }
+    }
+
+    static String leerSectorExistente(String mensaje) {
+        while (true) {
+            String sector = leerTexto(mensaje);
+            if (deposito.existeSector(sector)) return sector;
+            System.out.println("Sector '" + sector + "' no encontrado. Reintente.");
         }
     }
 
