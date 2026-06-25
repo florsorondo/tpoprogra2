@@ -4,21 +4,19 @@ import model.Producto;
 
 public class DiccionarioProductos {
 
-    String[] claves;
-    Producto[] valores;
+    Producto[] datos;
     int capacidad;
     int cantidad;
 
     public DiccionarioProductos(int capacidad) {
         this.capacidad = capacidad;
-        this.claves = new String[capacidad];
-        this.valores = new Producto[capacidad];
+        this.datos = new Producto[capacidad];
         this.cantidad = 0;
     }
 
-    private int buscarPosicion(String codigo) {
+    private int existe(String codigo) {
         for (int i = 0; i < cantidad; i++) {
-            if (claves[i].equals(codigo)) {
+            if (datos[i].codigo.equals(codigo)) {
                 return i;
             }
         }
@@ -26,38 +24,35 @@ public class DiccionarioProductos {
     }
 
     public void insertar(Producto p) {
-        int pos = buscarPosicion(p.codigo);
+        int pos = existe(p.codigo);
         if (pos != -1) {
-        // Si el código ya existe, actualiza el producto en esa posición
-        // en vez de agregarlo duplicado
-            valores[pos] = p;
+            datos[pos] = p;
             return;
         }
         if (cantidad == capacidad) {
             System.out.println("Diccionario lleno.");
             return;
         }
-        claves[cantidad] = p.codigo;
-        valores[cantidad] = p;
+        datos[cantidad] = p;
         cantidad++;
     }
 
     public Producto buscar(String codigo) {
-        int pos = buscarPosicion(codigo);
+        int pos = existe(codigo);
         if (pos == -1) return null;
-        return valores[pos];
+        return datos[pos];
     }
 
     public void mostrar() {
         for (int i = 0; i < cantidad; i++) {
-            System.out.println(valores[i]);
+            System.out.println(datos[i]);
         }
     }
 
     public Producto[] obtenerTodos() {
         Producto[] r = new Producto[cantidad];
         for (int i = 0; i < cantidad; i++) {
-            r[i] = valores[i];
+            r[i] = datos[i];
         }
         return r;
     }
